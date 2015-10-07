@@ -6,9 +6,6 @@ import (
 )
 
 func main() {
-   
-    //var a [][]string = challengesutils.StdinReaderMatrix();
-    
     testCases, input := challengesutils.StdinReaderWithTestCases()
     
     fmt.Println(testCases)
@@ -16,5 +13,4 @@ func main() {
     for _, element := range input {
     	fmt.Println(element)
     }
-    
 }
