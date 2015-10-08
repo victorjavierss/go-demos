@@ -2,9 +2,9 @@ package challengesutils
 
 import (
 	"io/ioutil"
+	"strconv"
 	"strings"
 	"os"
-	"strconv"
 )
 
 func StdinReaderMatrix() [][]string {
@@ -24,14 +24,7 @@ func StdinReaderArray() []string {
 
 func StdinReaderWithTestCases() (int, []string) {
     allInput := StdinReaderArray()
-    
-    noTestCases, _ := strconv.Atoi(allInput[0])
-
-    testCases := make([]string, len(allInput)-1)
-
-    for v := 1; v < len(allInput); v++ {
-        testCases[v-1] = allInput[v]
-    }
-    
+    noTestCases, _ := strconv.Atoi( strings.Trim(allInput[0], "￼") )
+    testCases := append([]string{}, allInput[1:len(allInput)]...)
     return noTestCases, testCases
 }
