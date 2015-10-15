@@ -28,3 +28,14 @@ func StdinReaderWithTestCases() (int, []string) {
     testCases := append([]string{}, allInput[1:len(allInput)]...)
     return noTestCases, testCases
 }
+
+func IsPalindrome(word string) bool {
+	j := len(word) - 1
+	for i := 0 ; i <= j ; i++ {
+        if word[i] != word[j] {
+        	return false
+        }
+        j--
+    }
+	return true;
+}

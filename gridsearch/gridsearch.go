@@ -62,7 +62,7 @@ func searchIn( haystack []string,  needle []string) bool {
 
 				matches := needleKey.FindAllStringSubmatchIndex(haystack[haystackIndex+needleIndex], -1)
 				
-				//fmt.Printf("Search [%v] => [%v] : [%v]\n", needleRow, haystack[haystackIndex+needleIndex], matches != nil)
+				fmt.Printf("Search [%v] => [%v] : [%v]\n", needleRow, haystack[haystackIndex+needleIndex], matches != nil)
 				
 				if matches != nil {
 					if needleIndex == 0 {
@@ -76,7 +76,7 @@ func searchIn( haystack []string,  needle []string) bool {
 				}
 			}
 			
-			//fmt.Printf("has the full pattern: %v \n", result)
+			fmt.Printf("has the full pattern: %v \n", result)
 			
 			if result {
 				break
@@ -92,8 +92,8 @@ func getKeyMatches( originalKeys [][]int, newKeys [][]int) [][]int {
 
 	aMap := map[int]int{}
 
-	//fmt.Printf("original Keys: %v \n", originalKeys)
-	//fmt.Printf("Keys to Find: %v \n", newKeys)
+	fmt.Printf("original Keys: %v \n", originalKeys)
+	fmt.Printf("Keys to Find: %v \n", newKeys)
 
 	for i, keys := range originalKeys {
 		if _, inMap := aMap[ keys[0] ]; ! inMap {
@@ -108,7 +108,7 @@ func getKeyMatches( originalKeys [][]int, newKeys [][]int) [][]int {
 		}
 	}
 
-	//fmt.Printf("Intersect: %v \n", matchesIntersect)
+	fmt.Printf("Intersect: %v \n", matchesIntersect)
 	
 	return matchesIntersect
 }
