@@ -3,6 +3,7 @@ package main
 import (
 	"challengesutils"
 	"fmt"
+	"math"
 )
 
 func main() {
@@ -12,52 +13,19 @@ func main() {
 	
 	
 	for _, word := range input {
-			
-	minTicks := 0
 	
-	if ! challengesutils.IsPalindrome(word) {
+		j := len(word) - 1
+		ticks := 0
 
-			ticksForward := 1
-			
-			copyWord := word
-			
-			loopForward:
-			for i := 0; i < len(word); i++ {
-				for letter := copyWord[i]-1; letter >= minLetter; letter-- {
-					copyWord = copyWord[0:i] + string(letter) + copyWord[i+1:len(word)]
-					if challengesutils.IsPalindrome(copyWord) {
-						break loopForward
-					} else {
-						ticksForward++
-					}
-				} 
-			}
-			
-			ticksBackwards := 1
-			copyWord = word
-		//	fmt.Printf("FWD: %v\n", ticksForward)
-			
-			loopBackwards: 
-			for i := len(word)-1; i > 0; i-- {
-				for letter := copyWord[i]-1; letter >= minLetter; letter-- {
-					copyWord = copyWord[0:i] + string(letter) + copyWord[i+1:len(word)]
-					if challengesutils.IsPalindrome(copyWord) {
-						break loopBackwards
-					} else {
-						ticksBackwards++
-					}
-				}
-			}
-
-		//	fmt.Printf("BAC: %v\n", ticksBackwards)
-
-			if ticksBackwards < ticksForward {
-				minTicks = ticksBackwards
-			} else {
-				minTicks = ticksForward	
-			}
-		} 
+		for i := 0 ; i <= j ; i++ {
+        	if word[i] != word[j] {
+        		charA := int(word[i]) 
+        		charB := int(word[j])
+        		ticks += int( math.Abs( float64(charA) - float64(charB)  ) )	
+        	}
+        	j--
+    	}
 		
-		fmt.Printf("%v\n", minTicks);
+		fmt.Printf("%v\n", ticks)
 	}
 }
